@@ -30,11 +30,11 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  bool _Edited = false;
+  bool _edited = false;
 
   void _clickEdit() {
     setState(() {
-      _Edited = !_Edited;
+      _edited = !_edited;
     });
   }
 
@@ -75,7 +75,7 @@ class _HomeState extends State<Home> {
   }
 
   Future<bool> _onWillPop() async {
-    if(_Edited){
+    if(_edited){
       _clickEdit();
       return false;
     }else{
@@ -90,9 +90,10 @@ class _HomeState extends State<Home> {
       onWillPop:_onWillPop,
       child: Scaffold(
         backgroundColor: MyColors.background,
-        appBar: _Edited ? _appBarEidt() : _appBar(),
+        appBar: _edited ? _appBarEidt() : _appBar(),
         body: Container(),
       ),
     );
   }
+
 }
