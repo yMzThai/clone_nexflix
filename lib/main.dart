@@ -17,18 +17,83 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        backgroundColor: MyColors.background,
-        appBar: AppBar(
-          centerTitle: true,
-          actions: [IconButton(onPressed: (){}, icon: const Icon(MyIcon.edit))],
-          title: Image.asset(
-            MyImages.fullLogo,
-            fit: BoxFit.fitHeight,
-            height: 120,
-          ),
-          backgroundColor: MyColors.background,
+      home: Home(),
+    );
+  }
+}
+
+class Home extends StatefulWidget {
+  const Home({Key? key}) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  bool _Edited = false;
+
+  void _clickEdit() {
+    setState(() {
+      _Edited = !_Edited;
+    });
+  }
+
+  PreferredSizeWidget _appBar() {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      centerTitle: true,
+      actions: [
+        IconButton(
+            onPressed: _clickEdit,
+            icon: const Icon(MyIcon.edit))
+      ],
+      title: Image.asset(
+        MyImages.fullLogo,
+        fit: BoxFit.fitHeight,
+        height: 120,
+      ),
+      backgroundColor: MyColors.background,
+    );
+  }
+  
+
+  PreferredSizeWidget _appBarEidt() {
+    return AppBar(
+      leadingWidth: 38.0,
+      leading: GestureDetector(
+        onTap: _clickEdit,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: IconButton(
+              onPressed: _clickEdit,
+              icon: Icon(MyIcon.back)),
         ),
+      ),
+      title: Text(
+          MyStrings.manageProfiles,
+          style: TextStyle(fontSize: 18.0),
+        ),
+      backgroundColor: MyColors.background,
+    );
+  }
+
+  Future<bool> _onWillPop() async {
+    if(_Edited){
+      _clickEdit();
+      return false;
+    }else{
+      return true;
+    }
+  }
+
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop:_onWillPop,
+      child: Scaffold(
+        backgroundColor: MyColors.background,
+        appBar: _Edited ? _appBarEidt() : _appBar(),
         body: Container(),
       ),
     );
