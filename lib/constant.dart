@@ -13,5 +13,5 @@ class MyStrings {
 
 
 class MyColors{
-  static const Color background = Color(0x00000000);
+  static const Color background = Color(0xFF000000);
 }
