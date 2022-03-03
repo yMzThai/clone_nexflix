@@ -18,4 +18,5 @@ class MyColors{
 
 class MyIcon{
   static const IconData edit = Icons.create;
+  static const IconData back = Icons.arrow_back;
 }
