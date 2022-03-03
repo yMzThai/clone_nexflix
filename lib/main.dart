@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
           title: Image.asset(
             MyImages.fullLogo,
             fit: BoxFit.fitHeight,
-            height: 100,
+            height: 120,
           ),
           backgroundColor: MyColors.background,
         ),
