@@ -60,14 +60,11 @@ class _HomeState extends State<Home> {
   PreferredSizeWidget _appBarEidt() {
     return AppBar(
       leadingWidth: 38.0,
-      leading: GestureDetector(
-        onTap: _clickEdit,
-        child: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: IconButton(
-              onPressed: _clickEdit,
-              icon: Icon(MyIcon.back)),
-        ),
+      leading: Padding(
+        padding: const EdgeInsets.only(left:10.0),
+        child: IconButton(
+            onPressed: _clickEdit,
+            icon: Icon(MyIcon.back)),
       ),
       title: Text(
           MyStrings.manageProfiles,
