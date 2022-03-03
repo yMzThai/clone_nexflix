@@ -15,3 +15,7 @@ class MyStrings {
 class MyColors{
   static const Color background = Color(0xFF000000);
 }
+
+class MyIcon{
+  static const IconData edit = Icons.create;
+}

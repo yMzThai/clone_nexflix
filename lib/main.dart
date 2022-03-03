@@ -1,6 +1,4 @@
-
 import 'package:clone_nexflix/constant.dart';
-import 'package:clone_nexflix/user.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,16 +17,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:  Scaffold(
+      home: Scaffold(
         backgroundColor: MyColors.background,
         appBar: AppBar(
           centerTitle: true,
-          title: Image.asset(MyImages.fullLogo,fit:BoxFit.fitHeight,
-          height: 100,),
+          actions: [IconButton(onPressed: (){}, icon: const Icon(MyIcon.edit))],
+          title: Image.asset(
+            MyImages.fullLogo,
+            fit: BoxFit.fitHeight,
+            height: 100,
+          ),
           backgroundColor: MyColors.background,
         ),
-        body: Column(mainAxisAlignment: MainAxisAlignment.start,
-        children:const[SelectUser()]),
+        body: Container(),
       ),
     );
   }
