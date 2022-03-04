@@ -19,3 +19,11 @@ class MyIcon {
   static const IconData edit = Icons.create;
   static const IconData back = Icons.arrow_back;
 }
+
+class MyProFile {
+  static const Map<String, int> profile =  {
+  "A_Series_of_Unfortunate_Evants": 9,
+  "Ask_the_StoryBots" : 6,
+  "Black_Mirror_01" : 7
+  };
+}
