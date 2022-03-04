@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Home(),
+      home: const Home(),
     );
   }
 }
@@ -64,9 +64,9 @@ class _HomeState extends State<Home> {
         padding: const EdgeInsets.only(left:10.0),
         child: IconButton(
             onPressed: _clickEdit,
-            icon: Icon(MyIcon.back)),
+            icon: const Icon(MyIcon.back)),
       ),
-      title: Text(
+      title: const Text(
           MyStrings.manageProfiles,
           style: TextStyle(fontSize: 18.0),
         ),
