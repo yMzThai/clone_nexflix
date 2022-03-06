@@ -89,12 +89,16 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         backgroundColor: MyColors.background,
         appBar: _edited ? _appBarEidt() : _appBar(),
-        body: GridView.count(
-          crossAxisCount: 2,
-          children: userList,
-          padding: const EdgeInsets.symmetric(horizontal: 66),
-          childAspectRatio: 0.82,
-        ),
+        body: ListView(
+          children: <Widget>[GridView.count(
+            crossAxisCount: 2,
+            children: userList,
+            padding: const EdgeInsets.symmetric(horizontal: 66),
+            childAspectRatio: 0.82,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+          ),
+          ]),
       ),
     );
   }

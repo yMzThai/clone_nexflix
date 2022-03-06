@@ -18,12 +18,17 @@ class _UserListState extends State<UserList> {
 
 
   Widget _profile(user) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
-      child: Image.asset(
-        MyProFile()
-            .getImage(user["Profile"]!["key"], user["Profile"]!["index"]),
-        width: widthImage,
+    return SizedBox(
+      width: 100,
+      height: 100,
+      child: Center(
+        child: ClipRRect( borderRadius: BorderRadius.circular(8),
+          child: Image.asset(
+            MyProFile()
+                .getImage(user["Profile"]!["key"], user["Profile"]!["index"]),
+            width: widthImage,
+          ),
+        ),
       ),
     );
   }
@@ -68,6 +73,7 @@ class _UserListState extends State<UserList> {
           widthImage = 100;
         });
       },
+      behavior: HitTestBehavior.opaque,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
