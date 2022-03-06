@@ -7,7 +7,7 @@ class MyImages {
 }
 
 class MyStrings {
-  static const String whoSWatching = "Who's Wathing?";
+  static const String whoSWatching = "Who's Watching?";
   static const String manageProfiles = "Manage Profiles";
 }
 

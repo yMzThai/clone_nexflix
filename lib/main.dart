@@ -82,8 +82,6 @@ class _HomeState extends State<Home> {
     }
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -91,19 +89,26 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         backgroundColor: MyColors.background,
         appBar: _edited ? _appBarEidt() : _appBar(),
-        body: ListView(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(28),
-              child: Center(
-                child: Wrap(
+        body: ListView(children: <Widget>[
+          const Padding(
+            padding:  EdgeInsets.only(top:28.0),
+            child: Center(
+              child:  Text(MyStrings.whoSWatching
+              ,style: TextStyle(color: MyColors.text,
+              fontSize: 18.0),),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(28),
+            child: Center(
+              child: Wrap(
                 children: userList,
                 runSpacing: 18,
                 spacing: 28,
-          ),
               ),
             ),
-          ]),
+          ),
+        ]),
       ),
     );
   }
