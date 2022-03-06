@@ -33,7 +33,7 @@ class MyProFile {
   "Lost_in_Space" : {"index":7,"count":9},
   "Money_Heist" : {"index":8,"count":9},
   "Orange_is_the_New_Black" : {"index":9,"count":10},
-  "Out_Planet" : {"index":10,"count":14},
+  "Our_Planet" : {"index":10,"count":14},
   "Queer_Eye" : {"index":11,"count":5},
   "Stranger_Things" : {"index":12,"count":16},
   "The_Boss_Baby_Back_in_Business" : {"index":13,"count":11},

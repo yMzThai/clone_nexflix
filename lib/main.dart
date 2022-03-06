@@ -33,7 +33,8 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   bool _edited = false;
-  List<UserList> userList = List.generate(users.length,(index)=> UserList(users[index]));
+  List<UserList> userList =
+      List.generate(users.length, (index) => UserList(users[index]));
 
   void _clickEdit() {
     setState(() {
@@ -88,7 +89,14 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         backgroundColor: MyColors.background,
         appBar: _edited ? _appBarEidt() : _appBar(),
-        body: Column(children: userList),
+        body: GridView.count(
+          crossAxisCount: 2,
+          children: userList,
+          padding: const EdgeInsets.symmetric(horizontal: 66),
+          mainAxisSpacing: 40.0,
+          crossAxisSpacing: 16.0,
+          shrinkWrap: true,
+        ),
       ),
     );
   }
