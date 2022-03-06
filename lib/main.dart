@@ -82,6 +82,8 @@ class _HomeState extends State<Home> {
     }
   }
 
+  
+
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -90,14 +92,17 @@ class _HomeState extends State<Home> {
         backgroundColor: MyColors.background,
         appBar: _edited ? _appBarEidt() : _appBar(),
         body: ListView(
-          children: <Widget>[GridView.count(
-            crossAxisCount: 2,
-            children: userList,
-            padding: const EdgeInsets.symmetric(horizontal: 66),
-            childAspectRatio: 0.82,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(28),
+              child: Center(
+                child: Wrap(
+                children: userList,
+                runSpacing: 18,
+                spacing: 28,
           ),
+              ),
+            ),
           ]),
       ),
     );
