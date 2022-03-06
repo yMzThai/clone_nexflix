@@ -55,6 +55,7 @@ class _UserListState extends State<UserList> {
       ),
     );
   }
+  
 
   Widget _textName(user) {
     return Padding(
