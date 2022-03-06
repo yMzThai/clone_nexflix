@@ -33,12 +33,24 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   bool _edited = false;
-  List<UserList> userList =
-      List.generate(users.length, (index) => UserList(users[index]));
+  List<UserList> userList =[];
+
+  
+  
+
+  @override
+  void initState() {
+    super.initState();
+    _edited = false;
+    userList =
+      List.generate(users.length, (index) => UserList(users[index],edited:_edited));
+  }
 
   void _clickEdit() {
     setState(() {
       _edited = !_edited;
+      userList =
+      List.generate(users.length, (index) => UserList(users[index],edited:_edited));
     });
   }
 
@@ -90,11 +102,11 @@ class _HomeState extends State<Home> {
         backgroundColor: MyColors.background,
         appBar: _edited ? _appBarEidt() : _appBar(),
         body: ListView(children: <Widget>[
-          const Padding(
-            padding:  EdgeInsets.only(top:28.0),
+           Padding(
+            padding: const EdgeInsets.only(top:28.0),
             child: Center(
-              child:  Text(MyStrings.whoSWatching
-              ,style: TextStyle(color: MyColors.text,
+              child:  Text(_edited ? "":MyStrings.whoSWatching
+              ,style: const TextStyle(color: MyColors.text,
               fontSize: 18.0),),
             ),
           ),
@@ -102,7 +114,7 @@ class _HomeState extends State<Home> {
             padding: const EdgeInsets.all(28),
             child: Center(
               child: Wrap(
-                children: userList,
+                children:userList,
                 runSpacing: 18,
                 spacing: 28,
               ),

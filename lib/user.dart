@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 class UserList extends StatefulWidget {
   const UserList(
     this.user, {
-    Key? key,
+    Key? key,required this.edited
   }) : super(key: key);
   final Map<String, dynamic> user;
-
+  final bool edited;
   @override
   State<UserList> createState() => _UserListState();
 }
@@ -25,16 +25,24 @@ class _UserListState extends State<UserList> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: Opacity(
-                opacity: 0.25,
+                opacity: widget.edited ? 0.25 : 1,
                 child: Image.asset(
                   MyProFile().getImage(
                       user["Profile"]!["key"], user["Profile"]!["index"]),
                   width: widthImage,
+
                 ),
               ),
             ),
           ),
-          Center(
+          widget.edited ? _iconEditUser():const SizedBox()
+        ],
+      ),
+    );
+  }
+  
+  Widget _iconEditUser(){
+    return Center(
             child: Container(
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
@@ -50,12 +58,8 @@ class _UserListState extends State<UserList> {
                 color: MyColors.text,
               ),
             ),
-          )
-        ],
-      ),
-    );
+          );
   }
-  
 
   Widget _textName(user) {
     return Padding(
@@ -84,7 +88,10 @@ class _UserListState extends State<UserList> {
     return GestureDetector(
       onTapDown: (index) {
         setState(() {
-          widthImage = 86;
+          if(!widget.edited){
+            widthImage = 86;
+          }
+          
         });
       },
       onTapUp: (index) {
