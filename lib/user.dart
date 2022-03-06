@@ -13,29 +13,52 @@ class UserList extends StatefulWidget {
 }
 
 class _UserListState extends State<UserList> {
-
   double widthImage = 100;
-
 
   Widget _profile(user) {
     return SizedBox(
       width: 100,
       height: 100,
-      child: Center(
-        child: ClipRRect( borderRadius: BorderRadius.circular(8),
-          child: Image.asset(
-            MyProFile()
-                .getImage(user["Profile"]!["key"], user["Profile"]!["index"]),
-            width: widthImage,
+      child: Stack(
+        children: [
+          Center(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Opacity(
+                opacity: 0.25,
+                child: Image.asset(
+                  MyProFile().getImage(
+                      user["Profile"]!["key"], user["Profile"]!["index"]),
+                  width: widthImage,
+                ),
+              ),
+            ),
           ),
-        ),
+          Center(
+            child: Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: MyColors.text,
+                  width: 2,
+                ),
+              ),
+              width: 46,
+              height: 46,
+              child: const Icon(
+                MyIcon.edit,
+                color: MyColors.text,
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
 
   Widget _textName(user) {
     return Padding(
-      padding: const EdgeInsets.only(top: 12,bottom: 6.0),
+      padding: const EdgeInsets.only(top: 12, bottom: 6.0),
       child: Text(
         user["Name"],
         style: const TextStyle(fontSize: 12, color: MyColors.text),
@@ -58,17 +81,17 @@ class _UserListState extends State<UserList> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTapDown: (index){
+      onTapDown: (index) {
         setState(() {
           widthImage = 86;
         });
       },
-      onTapUp:  (index){
+      onTapUp: (index) {
         setState(() {
           widthImage = 100;
         });
       },
-      onTapCancel: (){
+      onTapCancel: () {
         setState(() {
           widthImage = 100;
         });
