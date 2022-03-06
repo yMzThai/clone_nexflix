@@ -30,7 +30,7 @@ class _UserListState extends State<UserList> {
 
   Widget _textName(user) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5),
+      padding: const EdgeInsets.only(top: 12,bottom: 6.0),
       child: Text(
         user["Name"],
         style: const TextStyle(fontSize: 12, color: MyColors.text),
