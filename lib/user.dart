@@ -14,6 +14,8 @@ class UserList extends StatefulWidget {
 
 class _UserListState extends State<UserList> {
 
+  double widthImage = 100;
+
 
   Widget _profile(user) {
     return ClipRRect(
@@ -21,7 +23,7 @@ class _UserListState extends State<UserList> {
       child: Image.asset(
         MyProFile()
             .getImage(user["Profile"]!["key"], user["Profile"]!["index"]),
-        width: 100,
+        width: widthImage,
       ),
     );
   }
@@ -50,14 +52,30 @@ class _UserListState extends State<UserList> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.user);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        _profile(widget.user),
-        _textName(widget.user),
-        widget.user.containsKey("Password") ? iconLock() : unLock()
-      ],
+    return GestureDetector(
+      onTapDown: (index){
+        setState(() {
+          widthImage = 86;
+        });
+      },
+      onTapUp:  (index){
+        setState(() {
+          widthImage = 100;
+        });
+      },
+      onTapCancel: (){
+        setState(() {
+          widthImage = 100;
+        });
+      },
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          _profile(widget.user),
+          _textName(widget.user),
+          widget.user.containsKey("Password") ? iconLock() : unLock()
+        ],
+      ),
     );
   }
 }
