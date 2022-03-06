@@ -94,7 +94,6 @@ class _HomeState extends State<Home> {
           children: userList,
           padding: const EdgeInsets.symmetric(horizontal: 66),
           childAspectRatio: 0.82,
-          shrinkWrap: true,
         ),
       ),
     );
