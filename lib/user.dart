@@ -13,10 +13,7 @@ class UserList extends StatefulWidget {
 }
 
 class _UserListState extends State<UserList> {
-  @override
-  void initState() {
-    super.initState();
-  }
+
 
   Widget _profile(user) {
     return ClipRRect(
@@ -53,6 +50,7 @@ class _UserListState extends State<UserList> {
 
   @override
   Widget build(BuildContext context) {
+    print(widget.user);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [

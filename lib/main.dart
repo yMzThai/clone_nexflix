@@ -1,4 +1,6 @@
 import 'package:clone_nexflix/constant.dart';
+import 'package:clone_nexflix/user.dart';
+import 'package:clone_nexflix/userdetail.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -31,6 +33,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   bool _edited = false;
+  List<UserList> userList = List.generate(users.length,(index)=> UserList(users[index]));
 
   void _clickEdit() {
     setState(() {
@@ -43,9 +46,7 @@ class _HomeState extends State<Home> {
       automaticallyImplyLeading: false,
       centerTitle: true,
       actions: [
-        IconButton(
-            onPressed: _clickEdit,
-            icon: const Icon(MyIcon.edit))
+        IconButton(onPressed: _clickEdit, icon: const Icon(MyIcon.edit))
       ],
       title: Image.asset(
         MyImages.fullLogo,
@@ -55,45 +56,40 @@ class _HomeState extends State<Home> {
       backgroundColor: MyColors.background,
     );
   }
-  
 
   PreferredSizeWidget _appBarEidt() {
     return AppBar(
       leadingWidth: 38.0,
       leading: Padding(
-        padding: const EdgeInsets.only(left:10.0),
-        child: IconButton(
-            onPressed: _clickEdit,
-            icon: const Icon(MyIcon.back)),
+        padding: const EdgeInsets.only(left: 10.0),
+        child: IconButton(onPressed: _clickEdit, icon: const Icon(MyIcon.back)),
       ),
       title: const Text(
-          MyStrings.manageProfiles,
-          style: TextStyle(fontSize: 18.0),
-        ),
+        MyStrings.manageProfiles,
+        style: TextStyle(fontSize: 18.0),
+      ),
       backgroundColor: MyColors.background,
     );
   }
 
   Future<bool> _onWillPop() async {
-    if(_edited){
+    if (_edited) {
       _clickEdit();
       return false;
-    }else{
+    } else {
       return true;
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
-      onWillPop:_onWillPop,
+      onWillPop: _onWillPop,
       child: Scaffold(
         backgroundColor: MyColors.background,
         appBar: _edited ? _appBarEidt() : _appBar(),
-        body: Container(),
+        body: Column(children: userList),
       ),
     );
   }
-
 }
