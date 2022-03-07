@@ -34,7 +34,7 @@ class MyProFile {
   "Larva_Island" : {"index":6,"count":9},
   "Lost_in_Space" : {"index":7,"count":9},
   "Money_Heist" : {"index":8,"count":9},
-  "Orange_is_the_New_Black" : {"index":9,"count":10},
+  "Orange_Is_the_New_Black" : {"index":9,"count":10},
   "Our_Planet" : {"index":10,"count":14},
   "Queer_Eye" : {"index":11,"count":5},
   "Stranger_Things" : {"index":12,"count":16},

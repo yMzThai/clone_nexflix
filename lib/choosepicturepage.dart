@@ -50,7 +50,7 @@ class ChoosePicturePage extends StatelessWidget {
 
   Widget image(String uri) {
     return Padding(
-      padding: const EdgeInsets.all(6.0),
+      padding: const EdgeInsets.all(4.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),
         child: Image.asset(
@@ -69,7 +69,8 @@ class ChoosePicturePage extends StatelessWidget {
       List<String> uris = MyProFile().getImages(keyPicture[index]);
       List<Widget> images =
           List.generate(uris.length, (index) => image(uris[index]));
-      return listPicture(data["title"], images);
+          
+      return listPicture(data["title"], List.from(images.reversed));
     });
 
     return Scaffold(
