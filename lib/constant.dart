@@ -57,17 +57,17 @@ class MyProFile {
     return key.replaceAll("_", " ");
   }
 
-  List<String> _getImages(String key){
+  List<String> getImages(String key){
     int count = _profile[key]!["count"]!;
     List<String> images = List.generate(count, (index) => 'assets/images/${key}_${index<=8 ? "0"+(index+1).toString():index+1}.png');
     return images;
   }
 
-  Map<String, Object> getData(String key){
-    return {"title": _getName(key),"images":_getImages(key)};
+  Map<String, dynamic> getData(String key){
+    return {"title": _getName(key),"images":getImages(key)};
   }
 
   String getImage(String key,int index){
-    return _getImages(key)[index];
+    return getImages(key)[index];
   }
 }
