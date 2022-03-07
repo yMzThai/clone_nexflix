@@ -67,7 +67,7 @@ class EditProfilePage extends StatelessWidget {
       width: 250,
       padding: const EdgeInsets.symmetric(vertical: 18),
       child: TextField(
-        controller: TextEditingController()..text = 'sssss',
+        controller: TextEditingController()..text = user!["Name"],
         cursorColor: MyColors.text,
         decoration: const InputDecoration(
             fillColor: Color.fromARGB(255, 39, 39, 39),
