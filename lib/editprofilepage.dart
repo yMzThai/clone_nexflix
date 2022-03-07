@@ -66,16 +66,17 @@ class EditProfilePage extends StatelessWidget {
     return Container(
       width: 250,
       padding: const EdgeInsets.symmetric(vertical: 18),
-      child: const TextField(
+      child: TextField(
+        controller: TextEditingController()..text = 'sssss',
         cursorColor: MyColors.text,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
             fillColor: Color.fromARGB(255, 39, 39, 39),
             filled: true,
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(8))),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(8)))),
-        style: TextStyle(
+        style: const TextStyle(
           color: MyColors.text,
           fontWeight: FontWeight.w200,
           
