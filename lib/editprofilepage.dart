@@ -67,25 +67,31 @@ class EditProfilePage extends StatelessWidget {
       width: 250,
       padding: const EdgeInsets.symmetric(vertical: 18),
       child: const TextField(
+        cursorColor: MyColors.text,
         decoration: InputDecoration(
             fillColor: Color.fromARGB(255, 39, 39, 39),
             filled: true,
+            focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8))),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(8)))),
         style: TextStyle(
           color: MyColors.text,
           fontWeight: FontWeight.w200,
+          
         ),
       ),
     );
   }
 
-
-  Widget _onClick(BuildContext context,Widget widget){
-    return GestureDetector(onTapUp: (index){
-      Navigator.push(context, MaterialPageRoute(builder: (context) =>  const ChoosePicturePage()));
-    },
-    child: widget,);
+  Widget _onClick(BuildContext context, Widget widget) {
+    return GestureDetector(
+      onTapUp: (index) {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const ChoosePicturePage()));
+      },
+      child: widget,
+    );
   }
 
   @override
@@ -99,7 +105,7 @@ class EditProfilePage extends StatelessWidget {
             // mainAxisAlignment: MainAxisAlignment.center,
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              _onClick(context,_profilePicture()),
+              _onClick(context, _profilePicture()),
               _userName(),
             ]),
       ),
