@@ -24,6 +24,23 @@ class EditProfilePage extends StatelessWidget {
     );
   }
 
+  Widget _profilePicture(){
+    return Stack(
+                children: [
+                  Center(
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.asset(
+                        MyProFile().getImage( user!["Profile"]!["key"], user!["Profile"]!["index"]),
+                        width: 100,
+                      ),
+                    ),
+                  )
+                ],
+              );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,19 +51,7 @@ class EditProfilePage extends StatelessWidget {
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Stack(
-                children: [
-                  Center(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: Image.asset(
-                        MyProFile().getImage( user["Profile"]!["key"], user["Profile"]!["index"]),
-                        width: 100,
-                      ),
-                    ),
-                  )
-                ],
-              ),
+              _profilePicture(),
             ]),
       ),
     );
