@@ -24,22 +24,53 @@ class EditProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _profilePicture(){
-    return Stack(
-                children: [
-                  Center(
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: Image.asset(
-                        MyProFile().getImage( user!["Profile"]!["key"], user!["Profile"]!["index"]),
-                        width: 100,
-                      ),
-                    ),
-                  )
-                ],
-              );
+  Widget _profilePicture() {
+    return Center(
+      child: SizedBox(
+        width: 108,
+        height: 108,
+        child: Stack(
+          alignment: AlignmentDirectional.bottomEnd,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(4),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  MyProFile().getImage(
+                      user!["Profile"]!["key"], user!["Profile"]!["index"]),
+                  width: 100,
+                ),
+              ),
+            ),
+            Container(
+              decoration: const BoxDecoration(
+                  color: MyColors.text,
+                  borderRadius: BorderRadius.all(Radius.circular(6))),
+              width: 26,
+              height: 26,
+              child: const Icon(
+                Icons.create_outlined,
+                color: MyColors.background,
+                size: 18,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 
+  Widget _userName() {
+    return Container(
+      padding: const EdgeInsets.all(8),
+      child: const TextField(
+        decoration: InputDecoration(
+          fillColor: Colors.amber
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +80,11 @@ class EditProfilePage extends StatelessWidget {
       body: Container(
         padding: const EdgeInsets.all(8),
         child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            // mainAxisAlignment: MainAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               _profilePicture(),
+              _userName(),
             ]),
       ),
     );
