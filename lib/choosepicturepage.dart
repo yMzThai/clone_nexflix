@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 class ChoosePicturePage extends StatelessWidget {
   const ChoosePicturePage({Key? key}) : super(key: key);
 
-  
-
   PreferredSizeWidget _appBar(BuildContext context) {
     return AppBar(
       leadingWidth: 38.0,
@@ -54,23 +52,21 @@ class ChoosePicturePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-     List<String> keyPicture = MyProFile().getKeys();
-
-    List<Widget> listPic = List.generate(keyPicture.length,
-    (index) {
+    List<String> keyPicture = MyProFile().getKeys();
+    List<Widget> listPic = List.generate(keyPicture.length, (index) {
       Map<String, dynamic> data = MyProFile().getData(keyPicture[index]);
       List<String> uris = MyProFile().getImages(keyPicture[index]);
-      List<Widget> images = List.generate(uris.length,(index)=>image(uris[index]));
-      return listPicture(data["title"],images);
-    }
-    );
+      List<Widget> images =
+          List.generate(uris.length, (index) => image(uris[index]));
+      return listPicture(data["title"], images);
+    });
 
-  
     return Scaffold(
       backgroundColor: MyColors.background,
       appBar: _appBar(context),
-      body: ListView(children: listPic,),
+      body: ListView(
+        children: listPic,
+      ),
     );
   }
 }
