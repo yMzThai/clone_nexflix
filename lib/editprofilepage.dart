@@ -63,10 +63,17 @@ class EditProfilePage extends StatelessWidget {
 
   Widget _userName() {
     return Container(
-      padding: const EdgeInsets.all(8),
+      width: 250,
+      padding: const EdgeInsets.symmetric(vertical: 18),
       child: const TextField(
         decoration: InputDecoration(
-          fillColor: Colors.amber
+            fillColor: Color.fromARGB(255, 39, 39, 39),
+            filled: true,
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8)))),
+        style: TextStyle(
+          color: MyColors.text,
+          fontWeight: FontWeight.w200,
         ),
       ),
     );
