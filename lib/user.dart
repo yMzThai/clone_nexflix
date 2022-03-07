@@ -1,4 +1,5 @@
 import 'package:clone_nexflix/constant.dart';
+import 'package:clone_nexflix/editprofilepage.dart';
 import 'package:flutter/material.dart';
 
 class UserList extends StatefulWidget {
@@ -97,6 +98,9 @@ class _UserListState extends State<UserList> {
       onTapUp: (index) {
         setState(() {
           widthImage = 100;
+          if(widget.edited){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const EditProfilePage()));
+          }
         });
       },
       onTapCancel: () {
