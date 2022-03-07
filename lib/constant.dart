@@ -9,6 +9,7 @@ class MyImages {
 class MyStrings {
   static const String whoSWatching = "Who's Watching?";
   static const String manageProfiles = "Manage Profiles";
+  static const String editProfile = "Edit Profile";
 }
 
 class MyColors {
