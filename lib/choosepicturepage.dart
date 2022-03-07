@@ -24,28 +24,39 @@ class ChoosePicturePage extends StatelessWidget {
   }
 
   Widget listPicture(String title, List<Widget> images) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
+    return Column(
+      mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          title,
-          style: const TextStyle(fontSize: 18.0),
+        Padding(
+          padding: const EdgeInsets.only(left:8.0),
+          child: Text(
+            title,
+            style: const TextStyle(fontSize: 18.0, color: MyColors.text),
+          ),
         ),
-        ListView(
-          scrollDirection: Axis.horizontal,
-          children: images,
+        Expanded(
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: images,
+            shrinkWrap: true,
+            //physics: const ClampingScrollPhysics(),
+          ),
         )
       ],
     );
   }
 
   Widget image(String uri) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(8),
-      child: Image.asset(
-        uri,
-        width: 100,
+    return Padding(
+      padding: const EdgeInsets.all(6.0),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(8),
+        child: Image.asset(
+          uri,
+          width: 100,
+        ),
       ),
     );
   }
@@ -64,9 +75,14 @@ class ChoosePicturePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: MyColors.background,
       appBar: _appBar(context),
-      body: ListView(
-        children: listPic,
-      ),
+      body: ListView.builder(
+      scrollDirection: Axis.vertical,
+      itemCount: keyPicture.length,
+      itemBuilder: (BuildContext context, int index){
+        return Container(height: 150,
+        padding: const EdgeInsets.all(8.0),
+        child: listPic[index],);
+      }),
     );
   }
 }

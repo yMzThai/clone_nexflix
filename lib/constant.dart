@@ -44,7 +44,7 @@ class MyProFile {
   "The_Dark_Crystal_Age_of_Resistance" : {"index":15,"count":9},
   "The_Dragon_Prince" : {"index":16,"count":12},
   "The_Witcher" : {"index":17,"count":7},
-  "Trollhunters" : {"index":18,"count":8},
+  "Trollhunters_Tales_of_Arcadia" : {"index":18,"count":8},
   };
 
   List<String> getKeys(){
