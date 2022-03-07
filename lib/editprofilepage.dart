@@ -1,3 +1,4 @@
+import 'package:clone_nexflix/choosepicturepage.dart';
 import 'package:clone_nexflix/constant.dart';
 import 'package:flutter/material.dart';
 
@@ -72,6 +73,14 @@ class EditProfilePage extends StatelessWidget {
     );
   }
 
+
+  Widget _onClick(BuildContext context,Widget widget){
+    return GestureDetector(onTapUp: (index){
+      Navigator.push(context, MaterialPageRoute(builder: (context) =>  const ChoosePicturePage()));
+    },
+    child: widget,);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,7 +92,7 @@ class EditProfilePage extends StatelessWidget {
             // mainAxisAlignment: MainAxisAlignment.center,
             // crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              _profilePicture(),
+              _onClick(context,_profilePicture()),
               _userName(),
             ]),
       ),
