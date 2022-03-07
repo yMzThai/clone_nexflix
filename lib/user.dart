@@ -85,7 +85,7 @@ class _UserListState extends State<UserList> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,) {
     return GestureDetector(
       onTapDown: (index) {
         setState(() {
@@ -99,7 +99,7 @@ class _UserListState extends State<UserList> {
         setState(() {
           widthImage = 100;
           if(widget.edited){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const EditProfilePage()));
+            Navigator.push(context, MaterialPageRoute(builder: (context) =>  EditProfilePage(user:widget.user)));
           }
         });
       },

@@ -2,7 +2,8 @@ import 'package:clone_nexflix/constant.dart';
 import 'package:flutter/material.dart';
 
 class EditProfilePage extends StatelessWidget {
-  const EditProfilePage({ Key? key }) : super(key: key);
+  const EditProfilePage({ Key? key ,this.user}) : super(key: key);
+  final Map<String, dynamic>? user;
 
   PreferredSizeWidget _appBar(BuildContext context) {
     return AppBar(
