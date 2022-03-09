@@ -70,17 +70,92 @@ class EditProfilePage extends StatelessWidget {
         controller: TextEditingController()..text = user!["Name"],
         cursorColor: MyColors.text,
         decoration: const InputDecoration(
-            fillColor: Color.fromARGB(255, 39, 39, 39),
-            filled: true,
-            focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8))),
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(8)))),
+          fillColor: Color.fromARGB(255, 39, 39, 39),
+          filled: true,
+          focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8))),
+          border: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8))),
+        ),
         style: const TextStyle(
           color: MyColors.text,
           fontWeight: FontWeight.w200,
-          
         ),
+      ),
+    );
+  }
+
+  Widget _maturityrate() {
+    return Container(
+      width: 180,
+      padding: const EdgeInsets.only(top: 12),
+      child: TextButton(
+          onPressed: () {},
+          style: TextButton.styleFrom(
+            primary: MyColors.softText,
+            onSurface: MyColors.softBackground,
+            backgroundColor: MyColors.softBackground,
+            padding: const EdgeInsets.symmetric(
+              vertical: 18,
+              horizontal: 12,
+            ),
+          ),
+          child: Text('all maturity ratings'.toUpperCase())),
+    );
+  }
+
+  Widget _accountSetting() {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        vertical: 12,
+        horizontal: 0,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          RichText(
+            text: const TextSpan(
+              style: TextStyle(color: MyColors.solfText),
+              children: [
+                TextSpan(
+                  text: 'Show titles of',
+                ),
+                TextSpan(
+                    text: ' all maturity ratings ',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    )),
+                TextSpan(
+                  text: 'for this profile.',
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 6),
+            child: RichText(
+              text: const TextSpan(
+                style: TextStyle(
+                  color: MyColors.solfText,
+                ),
+                children: [
+                  TextSpan(
+                    text: 'Visit ',
+                  ),
+                  TextSpan(
+                    style: TextStyle(
+                      color: Colors.blue,
+                    ),
+                    text: ' Account Settings ',
+                  ),
+                  TextSpan(
+                    text: 'to change.',
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -108,6 +183,8 @@ class EditProfilePage extends StatelessWidget {
             children: <Widget>[
               _onClick(context, _profilePicture()),
               _userName(),
+              _maturityrate(),
+              _accountSetting(),
             ]),
       ),
     );
