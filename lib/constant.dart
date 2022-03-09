@@ -18,12 +18,43 @@ class MyColors {
   static const Color text = Color(0xFFFFFFFF);
   static const Color softText = Color.fromARGB(255, 218, 218, 218);
   static const Color softBackground = Color.fromARGB(255, 53, 53, 53);
+  static const Color btnBackground = Color.fromARGB(255, 39, 39, 39);
 }
 
 class MyIcon {
   static const IconData edit = Icons.create;
   static const IconData back = Icons.arrow_back;
 }
+
+List<String> a = [
+  'Dansk',
+  'Deutsch',
+  'English',
+  'Español',
+  'Français',
+  'Hrvatski',
+  'Indoesia',
+  'Italiano',
+  'Magyar',
+  'Melayu',
+  'Nederlands',
+  'Norsk bokmål',
+  'Polski',
+  'Svenska',
+  'Tiếng Việt',
+  'Türkçe',
+  'Čeština',
+  'Ελληνικά',
+  'Pусский',
+  'Українська',
+  'עברית',
+  'العربية',
+  'हिन्दी',
+  'ไทย',
+  '中文',
+  '日本語',
+  '한국어'
+];
 
 class MyProFile {
   static const Map<String, Map<String, int>> _profile = {
