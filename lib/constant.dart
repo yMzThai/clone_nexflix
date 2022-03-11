@@ -11,6 +11,35 @@ class MyStrings {
   static const String manageProfiles = "Manage Profiles";
   static const String editProfile = "Edit Profile";
   static const String choosePicture = "Choose Picture";
+  static const List<String> languages = [
+    'Dansk',
+    'Deutsch',
+    'English',
+    'Español',
+    'Français',
+    'Hrvatski',
+    'Indoesia',
+    'Italiano',
+    'Magyar',
+    'Melayu',
+    'Nederlands',
+    'Norsk bokmål',
+    'Polski',
+    'Svenska',
+    'Tiếng Việt',
+    'Türkçe',
+    'Čeština',
+    'Ελληνικά',
+    'Pусский',
+    'Українська',
+    'עברית',
+    'العربية',
+    'हिन्दी',
+    'ไทย',
+    '中文',
+    '日本語',
+    '한국어'
+  ];
 }
 
 class MyColors {
@@ -25,36 +54,6 @@ class MyIcon {
   static const IconData edit = Icons.create;
   static const IconData back = Icons.arrow_back;
 }
-
-List<String> a = [
-  'Dansk',
-  'Deutsch',
-  'English',
-  'Español',
-  'Français',
-  'Hrvatski',
-  'Indoesia',
-  'Italiano',
-  'Magyar',
-  'Melayu',
-  'Nederlands',
-  'Norsk bokmål',
-  'Polski',
-  'Svenska',
-  'Tiếng Việt',
-  'Türkçe',
-  'Čeština',
-  'Ελληνικά',
-  'Pусский',
-  'Українська',
-  'עברית',
-  'العربية',
-  'हिन्दी',
-  'ไทย',
-  '中文',
-  '日本語',
-  '한국어'
-];
 
 class MyProFile {
   static const Map<String, Map<String, int>> _profile = {
