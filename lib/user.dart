@@ -1,5 +1,6 @@
 import 'package:clone_nexflix/constant.dart';
 import 'package:clone_nexflix/editprofilepage.dart';
+import 'package:clone_nexflix/main2.dart';
 import 'package:flutter/material.dart';
 
 class UserList extends StatefulWidget {
@@ -81,14 +82,18 @@ class _UserListState extends State<UserList> {
   }
 
   AlertDialog alert() {
-    return  AlertDialog(
-      content: Row(mainAxisAlignment: MainAxisAlignment.center,
+    return AlertDialog(
+      content: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: const [
-          Text('Enter your Pin to access this profile.',
-         style: TextStyle(color: MyColors.text),),
-         //TextField(autofocus: true,
-         //keyboardType: TextInputType.number,)
-      ],),
+          Text(
+            'Enter your Pin to access this profile.',
+            style: TextStyle(color: MyColors.text),
+          ),
+          //TextField(autofocus: true,
+          //keyboardType: TextInputType.number,)
+        ],
+      ),
       backgroundColor: MyColors.softBackground,
     );
   }
@@ -121,6 +126,10 @@ class _UserListState extends State<UserList> {
                   builder: (BuildContext context) {
                     return alert();
                   });
+            } else {
+              Navigator.of(context).pushAndRemoveUntil(
+                  MaterialPageRoute(builder: (context) => const Main2()),
+                  (Route<dynamic> route) => false);
             }
           }
         });
