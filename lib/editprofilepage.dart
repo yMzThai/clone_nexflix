@@ -180,6 +180,7 @@ class EditProfilePage extends StatelessWidget {
       bool values = true,
       IconData icons = Icons.create,
       bool switchs = true}) {
+
     return Container(
       padding: const EdgeInsets.all(4),
       child: Align(

@@ -6,11 +6,66 @@ class MyImages {
   static const String kidsLogo = 'assets/images/kids_01.png';
 }
 
+class MyPage {
+  static const Map<String, List<IconData>> _pages = {
+    "Home": [Icons.home, Icons.home_outlined],
+    "Games": [Icons.videogame_asset, Icons.videogame_asset_outlined],
+    "Coming Soon": [Icons.video_library, Icons.video_library_outlined],
+    "Downloads": [
+      Icons.download_for_offline,
+      Icons.download_for_offline_outlined
+    ]
+  };
+
+  List<BottomNavigationBarItem> get bottomNavigationBarItems => _pages.keys
+      .map((e) => BottomNavigationBarItem(
+        tooltip: '',
+          icon: Padding(
+            padding: const EdgeInsets.only(bottom: 2.5),
+            child: Icon(_pages[e]![1]),
+          ),
+          activeIcon: Padding(
+            padding: const EdgeInsets.only(bottom: 2.5),
+            child: Icon(_pages[e]![0]),
+          ),
+          label: e))
+      .toList();
+}
+
 class MyStrings {
   static const String whoSWatching = "Who's Watching?";
   static const String manageProfiles = "Manage Profiles";
   static const String editProfile = "Edit Profile";
   static const String choosePicture = "Choose Picture";
+  static const List<String> languages = [
+    'Dansk',
+    'Deutsch',
+    'English',
+    'Español',
+    'Français',
+    'Hrvatski',
+    'Indoesia',
+    'Italiano',
+    'Magyar',
+    'Melayu',
+    'Nederlands',
+    'Norsk bokmål',
+    'Polski',
+    'Svenska',
+    'Tiếng Việt',
+    'Türkçe',
+    'Čeština',
+    'Ελληνικά',
+    'Pусский',
+    'Українська',
+    'עברית',
+    'العربية',
+    'हिन्दी',
+    'ไทย',
+    '中文',
+    '日本語',
+    '한국어'
+  ];
 }
 
 class MyColors {
@@ -19,42 +74,14 @@ class MyColors {
   static const Color softText = Color.fromARGB(255, 218, 218, 218);
   static const Color softBackground = Color.fromARGB(255, 53, 53, 53);
   static const Color btnBackground = Color.fromARGB(255, 39, 39, 39);
+  static const Color unselectTab = Color.fromARGB(255, 134, 134, 134);
+  static const Color tab = Color.fromARGB(255, 20, 20, 20);
 }
 
 class MyIcon {
   static const IconData edit = Icons.create;
   static const IconData back = Icons.arrow_back;
 }
-
-List<String> a = [
-  'Dansk',
-  'Deutsch',
-  'English',
-  'Español',
-  'Français',
-  'Hrvatski',
-  'Indoesia',
-  'Italiano',
-  'Magyar',
-  'Melayu',
-  'Nederlands',
-  'Norsk bokmål',
-  'Polski',
-  'Svenska',
-  'Tiếng Việt',
-  'Türkçe',
-  'Čeština',
-  'Ελληνικά',
-  'Pусский',
-  'Українська',
-  'עברית',
-  'العربية',
-  'हिन्दी',
-  'ไทย',
-  '中文',
-  '日本語',
-  '한국어'
-];
 
 class MyProFile {
   static const Map<String, Map<String, int>> _profile = {
