@@ -92,7 +92,6 @@ class EditProfilePage extends StatelessWidget {
     return Align(
       alignment: Alignment.center,
       child: Container(
-        width: 180,
         padding: const EdgeInsets.only(top: 12),
         child: TextButton(
             onPressed: () {},
@@ -236,7 +235,7 @@ class EditProfilePage extends StatelessWidget {
                         color: MyColors.softText,
                         size: 26,
                       ),
-              )
+              ),
             ],
           ),
         ),
@@ -244,33 +243,33 @@ class EditProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _deleteUser(){
+  Widget _deleteUser() {
     return BottomAppBar(
-        color: MyColors.background,
-        child: Container(
-          padding: const EdgeInsets.only(bottom: 20, top:8),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
-              Padding(
-                padding: EdgeInsets.only(right: 8),
-                child: Icon(
-                  Icons.delete,
+      color: MyColors.background,
+      child: Container(
+        padding: const EdgeInsets.only(bottom: 20, top: 8),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Padding(
+              padding: EdgeInsets.only(right: 8),
+              child: Icon(
+                Icons.delete,
+                color: MyColors.softText,
+                size: 30,
+              ),
+            ),
+            Text(
+              'Delete Profile',
+              style: TextStyle(
                   color: MyColors.softText,
-                  size: 30,
-                ),
-              ),
-              Text(
-                'Delete Profile',
-                style: TextStyle(
-                    color: MyColors.softText,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
+            ),
+          ],
         ),
-      );
+      ),
+    );
   }
 
   Widget _onClick(BuildContext context, Widget widget) {
