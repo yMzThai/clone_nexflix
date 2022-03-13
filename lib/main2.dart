@@ -22,7 +22,7 @@ class _Main2State extends State<Main2> {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: MyColors.text,
+      backgroundColor: MyColors.background,
       body: pages.elementAt(index),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: index,
@@ -111,9 +111,9 @@ class _homePageState extends State<homePage> {
                       ),
                     ),
                     Row(children: const [
-                      Icon(Icons.cast, color: MyColors.background),
-                      Icon(Icons.search, color: MyColors.background),
-                      Icon(Icons.tune, color: MyColors.background),
+                      Icon(Icons.cast, color: MyColors.text),
+                      Icon(Icons.search, color: MyColors.text),
+                      Icon(Icons.tune, color: MyColors.text),
                     ]),
                   ]),
               bottom: PreferredSize(
