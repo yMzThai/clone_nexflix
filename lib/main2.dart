@@ -1,4 +1,5 @@
 import 'package:clone_nexflix/constant.dart';
+import 'package:clone_nexflix/gamespage.dart';
 import 'package:flutter/material.dart';
 
 class Main2 extends StatefulWidget {
@@ -19,6 +20,7 @@ class _Main2State extends State<Main2> {
   @override
   Widget build(BuildContext context) {
     pages[0] = HomePage(user: widget.user);
+    pages[1] = GamesPage(user: widget.user);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -57,8 +59,11 @@ class _HomePageState extends State<HomePage> {
   double _transparentBg = 0;
   // double _visible = 1;
   double _scrollmoving = 0;
+  Widget _tes = Text('55555');
+
 
   late ScrollController _scrollController;
+
 
   // AnimatedOpacity _opacityAnime(Widget widget) {
   //   return AnimatedOpacity(
@@ -70,16 +75,19 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    super.initState();
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {
           // _visible = _scrollController.offset > _scrollmoving ? 0 : 1;
           _scrollmoving = _scrollController.offset;
           _transparentBg = _scrollmoving <= 200 ? _scrollmoving / 4 : 50;
+          _tes = Text(widget.user!["Name"].toString());
+          print(_scrollController);
         });
       });
 
-    super.initState();
+    
   }
 
   @override
@@ -133,11 +141,20 @@ class _HomePageState extends State<HomePage> {
           ];
         },
         body: ListView(
+          controller: _scrollController,
           children: [
+            Container(
+              height: 500,
+              decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage(MyProFile().getImage(widget.user!["Profile"]!["key"],
+                              widget.user!["Profile"]!["index"])),
+              fit: BoxFit.cover,
+              alignment: const FractionalOffset(-1,5))),
+            ),
             Container(
               padding: const EdgeInsets.all(5),
               height: 2000,
-              child: const Text('55555'),
+              child: _tes,
             ),
             Container(
               padding: const EdgeInsets.all(5),
