@@ -83,6 +83,7 @@ class _GamesPage extends State<GamesPage> {
               bottom: PreferredSize(
                   preferredSize: const Size.fromHeight(50),
                   child: Container(
+                    padding: EdgeInsets.zero,
                     height: 50,
                     child: const Text('aaaa'),
                   )),

@@ -1,6 +1,8 @@
 import 'package:clone_nexflix/constant.dart';
 import 'package:clone_nexflix/customappbar.dart';
+import 'package:clone_nexflix/favoritewidget.dart';
 import 'package:flutter/material.dart';
+import 'dart:math';
 
 class Main2 extends StatefulWidget {
   const Main2({Key? key, this.user}) : super(key: key);
@@ -17,16 +19,26 @@ class _Main2State extends State<Main2> {
               style: const TextStyle(color: MyColors.text))));
   int index = 0;
 
+  List<String> posters = List.from(Poster.url);
   @override
   Widget build(BuildContext context) {
-    pages[0] = HomePage(user: widget.user);
-    pages[2] = CusttomSlivereditor(
-      user: widget.user
-    );
+    pages[2] = HomePage(user: widget.user);
+    pages[0] = CusttomSlivereditor(user: widget.user, lists: [
+      listViewHoriz(title: 'My List', listPoster: posters..shuffle()),
+      listViewHoriz(title: 'Continue Watching', listPoster: posters..shuffle()),
+      listViewHoriz(title: 'Recently Added', listPoster: posters..shuffle()),
+      listViewHoriz(title: 'Trending Now', listPoster: posters..shuffle()),
+      listViewHoriz(
+          title: 'Only on Netflix', listPoster: posters..shuffle(), size: 300),
+      listViewHoriz(title: 'New Releases', listPoster:posters..shuffle()),
+      listViewHoriz(
+          title: 'Award-winning Visually-striking Western Moview/Series',
+          listPoster: posters..shuffle())
+    ]);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: MyColors.text,
+      backgroundColor: MyColors.background,
       body: pages.elementAt(index),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: index,
@@ -46,6 +58,47 @@ class _Main2State extends State<Main2> {
         },
       ),
     );
+  }
+
+  Widget listViewHoriz(
+      {String? title, List<String>? listPoster, double size = 175}) {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.only(top: 16, left: 8),
+            child: Wrap(
+              children: [
+                Text(
+                  title!,
+                  style: const TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: MyColors.text),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: size,
+            child: ListView(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              children: insideList(listPoster: listPoster, size: size),
+            ),
+          )
+        ]);
+  }
+
+  List<Widget> insideList({List<String>? listPoster, double? size}) {
+    List<Widget> piclist = List.generate(
+        listPoster!.length,
+        (i) => Padding(
+              padding: const EdgeInsets.all(6),
+              child: roundImageNet(file: listPoster[i], size: (size! - 12.0)),
+            ));
+    return piclist;
   }
 }
 
@@ -130,6 +183,7 @@ class _HomePageState extends State<HomePage> {
               bottom: PreferredSize(
                   preferredSize: const Size.fromHeight(50),
                   child: Container(
+                    padding: EdgeInsets.zero,
                     height: 50,
                     child: const Text('aaaa'),
                   )),
