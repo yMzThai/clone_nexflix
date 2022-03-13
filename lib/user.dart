@@ -128,7 +128,7 @@ class _UserListState extends State<UserList> {
                   });
             } else {
               Navigator.of(context).pushAndRemoveUntil(
-                  MaterialPageRoute(builder: (context) => const Main2()),
+                  MaterialPageRoute(builder: (context) =>  Main2(user: widget.user)),
                   (Route<dynamic> route) => false);
             }
           }
