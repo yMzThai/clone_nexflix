@@ -23,7 +23,7 @@ class _Main2State extends State<Main2> {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: MyColors.text,
+      backgroundColor: MyColors.background,
       body: pages.elementAt(index),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: index,
@@ -110,18 +110,10 @@ class _HomePageState extends State<HomePage> {
                       'assets/images/Netflix_N_logo.png',
                       width: 20,
                     ),
-                    Row(children: [
-                      const Icon(Icons.cast, color: MyColors.background),
-                      const Icon(Icons.search, color: MyColors.background),
-                      const Icon(Icons.tune, color: MyColors.background),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.asset(
-                          MyProFile().getImage(widget.user!["Profile"]!["key"],
-                              widget.user!["Profile"]!["index"]),
-                          width: 24,
-                        ),
-                      )
+                    Row(children: const [
+                      Icon(Icons.cast, color: MyColors.text),
+                      Icon(Icons.search, color: MyColors.text),
+                      Icon(Icons.tune, color: MyColors.text),
                     ]),
                   ]),
               bottom: PreferredSize(
