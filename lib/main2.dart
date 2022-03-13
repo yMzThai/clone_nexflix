@@ -21,6 +21,7 @@ class _Main2State extends State<Main2> {
   Widget build(BuildContext context) {
     pages[0] = HomePage(user: widget.user);
     pages[1] = GamesPage(user: widget.user);
+    pages[2] = GamesPage(user: widget.user);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
