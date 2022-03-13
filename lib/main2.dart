@@ -1,4 +1,5 @@
 import 'package:clone_nexflix/constant.dart';
+import 'package:clone_nexflix/customappbar.dart';
 import 'package:flutter/material.dart';
 
 class Main2 extends StatefulWidget {
@@ -19,6 +20,9 @@ class _Main2State extends State<Main2> {
   @override
   Widget build(BuildContext context) {
     pages[0] = HomePage(user: widget.user);
+    pages[2] = CusttomSlivereditor(
+      user: widget.user
+    );
 
     return Scaffold(
       extendBodyBehindAppBar: true,
