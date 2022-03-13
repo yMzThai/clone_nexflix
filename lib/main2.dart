@@ -3,7 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class Main2 extends StatefulWidget {
-  const Main2({Key? key,this.user}) : super(key: key);
+  const Main2({Key? key, this.user}) : super(key: key);
   final Map<String, dynamic>? user;
   @override
   State<Main2> createState() => _Main2State();
@@ -23,7 +23,7 @@ class _Main2State extends State<Main2> {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: MyColors.background,
+      backgroundColor: MyColors.text,
       body: pages.elementAt(index),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: index,
@@ -47,7 +47,7 @@ class _Main2State extends State<Main2> {
 }
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key,this.user}) : super(key: key);
+  const HomePage({Key? key, this.user}) : super(key: key);
   final Map<String, dynamic>? user;
 
   @override
@@ -110,10 +110,18 @@ class _HomePageState extends State<HomePage> {
                       'assets/images/Netflix_N_logo.png',
                       width: 20,
                     ),
-                    Row(children: const [
-                      Icon(Icons.cast, color: MyColors.text),
-                      Icon(Icons.search, color: MyColors.text),
-                      Icon(Icons.tune, color: MyColors.text),
+                    Row(children: [
+                      const Icon(Icons.cast, color: MyColors.background),
+                      const Icon(Icons.search, color: MyColors.background),
+                      const Icon(Icons.tune, color: MyColors.background),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.asset(
+                          MyProFile().getImage(widget.user!["Profile"]!["key"],
+                              widget.user!["Profile"]!["index"]),
+                          width: 24,
+                        ),
+                      )
                     ]),
                   ]),
               bottom: PreferredSize(
