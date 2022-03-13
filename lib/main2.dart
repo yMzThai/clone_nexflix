@@ -1,4 +1,5 @@
 import 'package:clone_nexflix/constant.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class Main2 extends StatefulWidget {
