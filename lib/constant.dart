@@ -61,8 +61,8 @@ class Poster {
 class RecShow {
   static const Map<String, String> adam = {
     'file': 'assets/images/the_adam_project.png',
-    'type': '/images/netflix_film.png',
-    'name': '/images/the_adam_project_name.png'
+    'type': 'assets/images/netflix_film.png',
+    'name': 'assets/images/the_adam_project_name.png'
   };
   static const List<String> genres = [
     'Sci-Fi',
