@@ -1,5 +1,6 @@
 import 'package:clone_nexflix/constant.dart';
-import 'package:clone_nexflix/gamespage.dart';
+import 'package:clone_nexflix/customappbar.dart';
+import 'package:clone_nexflix/favoritewidget.dart';
 import 'package:flutter/material.dart';
 
 class Main2 extends StatefulWidget {
@@ -17,15 +18,27 @@ class _Main2State extends State<Main2> {
               style: const TextStyle(color: MyColors.text))));
   int index = 0;
 
+  List<String> posters = List.from(Poster.url);
   @override
   Widget build(BuildContext context) {
-    pages[0] = HomePage(user: widget.user);
-    pages[1] = GamesPage(user: widget.user);
-    pages[2] = GamesPage(user: widget.user);
+    pages[2] = HomePage(user: widget.user);
+    pages[0] = CusttomSlivereditor(user: widget.user, lists: [
+      recommendShow(file:RecShow.adam, genres: RecShow.genres),
+      listViewHoriz(title: 'My List', listPoster: posters..shuffle()),
+      listViewHoriz(title: 'Continue Watching', listPoster: posters..shuffle()),
+      listViewHoriz(title: 'Recently Added', listPoster: posters..shuffle()),
+      listViewHoriz(title: 'Trending Now', listPoster: posters..shuffle()),
+      listViewHoriz(
+          title: 'Only on Netflix', listPoster: posters..shuffle(), size: 300),
+      listViewHoriz(title: 'New Releases', listPoster:posters..shuffle()),
+      listViewHoriz(
+          title: 'Award-winning Visually-striking Western Moview/Series',
+          listPoster: posters..shuffle())
+    ]);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      backgroundColor: MyColors.text,
+      backgroundColor: MyColors.background,
       body: pages.elementAt(index),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: index,
@@ -46,6 +59,47 @@ class _Main2State extends State<Main2> {
       ),
     );
   }
+
+  Widget listViewHoriz(
+      {String? title, List<String>? listPoster, double size = 175}) {
+    return Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.only(top: 16, left: 8),
+            child: Wrap(
+              children: [
+                Text(
+                  title!,
+                  style: const TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: MyColors.text),
+                )
+              ],
+            ),
+          ),
+          SizedBox(
+            height: size,
+            child: ListView(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              children: insideList(listPoster: listPoster, size: size),
+            ),
+          )
+        ]);
+  }
+
+  List<Widget> insideList({List<String>? listPoster, double? size}) {
+    List<Widget> piclist = List.generate(
+        listPoster!.length,
+        (i) => Padding(
+              padding: const EdgeInsets.all(6),
+              child: roundImageNet(file: listPoster[i], size: (size! - 12.0)),
+            ));
+    return piclist;
+  }
 }
 
 class HomePage extends StatefulWidget {
@@ -60,11 +114,8 @@ class _HomePageState extends State<HomePage> {
   double _transparentBg = 0;
   // double _visible = 1;
   double _scrollmoving = 0;
-  Widget _tes = Text('55555');
-
 
   late ScrollController _scrollController;
-
 
   // AnimatedOpacity _opacityAnime(Widget widget) {
   //   return AnimatedOpacity(
@@ -76,19 +127,16 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    super.initState();
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {
           // _visible = _scrollController.offset > _scrollmoving ? 0 : 1;
           _scrollmoving = _scrollController.offset;
           _transparentBg = _scrollmoving <= 200 ? _scrollmoving / 4 : 50;
-          _tes = Text(widget.user!["Name"].toString());
-          print(_scrollController);
         });
       });
 
-    
+    super.initState();
   }
 
   @override
@@ -135,6 +183,7 @@ class _HomePageState extends State<HomePage> {
               bottom: PreferredSize(
                   preferredSize: const Size.fromHeight(50),
                   child: Container(
+                    padding: EdgeInsets.zero,
                     height: 50,
                     child: const Text('aaaa'),
                   )),
@@ -142,20 +191,11 @@ class _HomePageState extends State<HomePage> {
           ];
         },
         body: ListView(
-          controller: _scrollController,
           children: [
-            Container(
-              height: 500,
-              decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage(MyProFile().getImage(widget.user!["Profile"]!["key"],
-                              widget.user!["Profile"]!["index"])),
-              fit: BoxFit.cover,
-              alignment: const FractionalOffset(-1,5))),
-            ),
             Container(
               padding: const EdgeInsets.all(5),
               height: 2000,
-              child: _tes,
+              child: const Text('55555'),
             ),
             Container(
               padding: const EdgeInsets.all(5),

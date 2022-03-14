@@ -1,5 +1,6 @@
 import 'package:clone_nexflix/choosepicturepage.dart';
 import 'package:clone_nexflix/constant.dart';
+import 'package:clone_nexflix/favoritewidget.dart';
 import 'package:flutter/material.dart';
 
 class EditProfilePage extends StatelessWidget {
@@ -35,14 +36,8 @@ class EditProfilePage extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.all(4),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: Image.asset(
-                  MyProFile().getImage(
-                      user!["Profile"]!["key"], user!["Profile"]!["index"]),
-                  width: 100,
-                ),
-              ),
+              child: roundImage(file: MyProFile().getImage(
+                      user!["Profile"]!["key"], user!["Profile"]!["index"])),
             ),
             Container(
               decoration: const BoxDecoration(

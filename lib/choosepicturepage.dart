@@ -50,13 +50,13 @@ class ChoosePicturePage extends StatelessWidget {
     );
   }
 
-  Widget image(String uri) {
+  Widget image(String url) {
     return Padding(
       padding: const EdgeInsets.all(4.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(8),
         child: Image.asset(
-          uri,
+          url,
           width: 100,
         ),
       ),
