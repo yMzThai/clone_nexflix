@@ -1,9 +1,6 @@
 
-
-
-
-import 'package:clone_nexflix/constant.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class GamesPage extends StatefulWidget {
   const GamesPage({Key? key, this.user}) : super(key: key);
@@ -14,80 +11,140 @@ class GamesPage extends StatefulWidget {
 }
 
 class _GamesPage extends State<GamesPage> {
-  double _transparentBg = 0;
-  // double _visible = 1;
-  double _scrollmoving = 0;
-
-  late ScrollController _scrollController;
-
-  // AnimatedOpacity _opacityAnime(Widget widget) {
-  //   return AnimatedOpacity(
-  //     opacity: _visible,
-  //     duration: const Duration(milliseconds: 250),
-  //     child: widget,
-  //   );
-  // }
+  late ScrollController _scone, _stwo;
+  double height = 100;
+  double curMetrics = 0;
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController()
-      ..addListener(() {
-        setState(() {
-          // _visible = _scrollController.offset > _scrollmoving ? 0 : 1;
-          _scrollmoving = _scrollController.offset;
-          _transparentBg = _scrollmoving <= 200 ? _scrollmoving / 4 : 50;
-        });
-      });
-
-    super.initState();
+    _scone = ScrollController();
+    _stwo = ScrollController();
   }
 
   @override
   void dispose() {
-    _scrollController.dispose();
+    _scone.dispose();
+    _stwo.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-        controller: _scrollController,
-        slivers: [ SliverAppBar(
-              pinned: true,
-              floating: true,
-              snap: true,
-              elevation: 0,
-              backgroundColor: Color.fromARGB(_transparentBg.toInt(), 0, 0, 0),
-              title: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Image.asset(
-                      'assets/images/Netflix_N_logo.png',
-                      width: 20,
-                    ),
-                    Row(children: [
-                      const Icon(Icons.cast, color: MyColors.background),
-                      const Icon(Icons.search, color: MyColors.background),
-                      const Icon(Icons.tune, color: MyColors.background),
-                      ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.asset(
-                          MyProFile().getImage(widget.user!["Profile"]!["key"],
-                              widget.user!["Profile"]!["index"]),
-                          width: 24,
-                        ),
-                      )
-                    ]),
-                  ]),
-              bottom: PreferredSize(
-                  preferredSize: const Size.fromHeight(50),
-                  child: Container(
-                    padding: EdgeInsets.zero,
-                    height: 50,
-                    child: const Text('aaaa'),
-                  )),
-            )],
-      );
+    return Stack(children: [Positioned(
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        child: NotificationListener<UserScrollNotification>(
+      onNotification: (notification) {
+        setState(() {
+          if(_stwo.position.userScrollDirection == ScrollDirection.reverse){
+            double h = height - notification.metrics.extentBefore + curMetrics;
+            curMetrics = notification.metrics.extentBefore;
+            height =  h > 50? h : 50;
+          }
+
+
+          _scone.jumpTo(_scone.position.maxScrollExtent);
+
+        });
+        //print(notification.metrics.extentAfter);
+        //print(notification.metrics.extentBefore);
+        print(_stwo.offset);
+        print(_scone.offset);
+        return true;
+      },
+      child: ListView(
+          controller: _stwo,
+          children: [
+            Container(
+              width: double.infinity,
+              height: 200,
+              color: Colors.red,
+            ),
+            Container(
+              width: double.infinity,
+              height: 200,
+              color: Colors.blue,
+            ),
+            Container(
+              width: double.infinity,
+              height: 1000,
+              color: Colors.green,
+            ),
+            Container(
+              width: double.infinity,
+              height: 200,
+              color: Colors.pink,
+            ),
+          ]))),
+        
+        Positioned(
+          top: MediaQuery.of(context).padding.top,
+          left: 0,
+          right: 0,
+          height: height,
+            child: ListView(
+              controller: _scone,
+          children: [
+            Container(
+              width: double.infinity,
+              height: 50,
+              color: Colors.white,
+            ),
+            Container(
+              width: double.infinity,
+              height: 50,
+              color: Colors.yellow,
+            ),
+          ],
+        ))
+      ]);
   }
+
+  /*
+  late ScrollController _scone, _sctwo;
+
+  @override
+   void initState() {
+    super.initState();
+    _scone = ScrollController();
+    _sctwo = ScrollController();
+
+    _sctwo.addListener(() {
+        _scone.animateTo(_sctwo.offset, duration: const Duration(milliseconds: 10), curve: Curves.linear);
+
+    });
+
+   }
+
+ 
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+      Positioned(
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        child: ListView(padding: const EdgeInsets.only(top:0),
+        controller: _scone,
+          children: [...List.generate(1000, (index) => Text(index.toString(),style: const TextStyle(color: MyColors.text),))],)),
+          Positioned(
+        top: 100,
+        left: 0,
+        right: 0,
+        bottom: 500,
+        child: ListView(padding: const EdgeInsets.only(top:0),
+        controller: _sctwo,
+          children: [...List.generate(100, (index) => Text(index.toString(),style: const TextStyle(color: MyColors.text),))],)),],
+      
+    );
+
+    
+  }*/
 }

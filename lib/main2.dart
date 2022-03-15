@@ -1,6 +1,7 @@
 import 'package:clone_nexflix/constant.dart';
 import 'package:clone_nexflix/customappbar.dart';
 import 'package:clone_nexflix/favoritewidget.dart';
+import 'package:clone_nexflix/gamespage.dart';
 import 'package:flutter/material.dart';
 
 class Main2 extends StatefulWidget {
@@ -22,6 +23,7 @@ class _Main2State extends State<Main2> {
   @override
   Widget build(BuildContext context) {
     pages[2] = HomePage(user: widget.user);
+    pages[1] = GamesPage(user: widget.user);
     pages[0] = CusttomSlivereditor(user: widget.user, lists: [
       recommendShow(file:RecShow.adam, genres: RecShow.genres),
       listViewHoriz(title: 'My List', listPoster: posters..shuffle()),

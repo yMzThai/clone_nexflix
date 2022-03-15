@@ -19,11 +19,12 @@ class _CusttomSlivereditorState extends State<CusttomSlivereditor> {
   double _scrollmoving = 0;
   double _tops = 0;
 
-  late ScrollController _scrollController;
+  late ScrollController _scrollController ,_scrollController2;
 
   @override
   void initState() {
     super.initState();
+    _scrollController2  = ScrollController();
     _scrollController = ScrollController()
       ..addListener(() {
         setState(() {
@@ -32,11 +33,12 @@ class _CusttomSlivereditorState extends State<CusttomSlivereditor> {
               : 200;
         });
       });
-    super.initState();
+    
   }
 
   @override
   void dispose() {
+    _scrollController2.dispose();
     _scrollController.dispose();
     super.dispose();
   }
@@ -58,6 +60,7 @@ class _CusttomSlivereditorState extends State<CusttomSlivereditor> {
         padding: EdgeInsets.zero,
         child: Stack(children: <Widget>[
           Positioned.fill(
+            top:-MediaQuery.of(context).padding.top,
               child: NotificationListener<ScrollNotification>(
                   onNotification: (scrollNotification) {
                     setState(() {
@@ -83,6 +86,9 @@ class _CusttomSlivereditorState extends State<CusttomSlivereditor> {
                             ? (_scrollmoving - _scrollController.offset)
                             : -60;
                       }
+
+                      print(_tops);
+                      _scrollController2.jumpTo(_scrollController2.position.maxScrollExtent);
                     });
                     return true; //setState function
                   },
@@ -91,47 +97,60 @@ class _CusttomSlivereditorState extends State<CusttomSlivereditor> {
                     children:widget.lists!,
                   ))),
           Positioned(
-              top: _tops,
+              top: MediaQuery.of(context).padding.top,
               left: 0,
               right: 0,
-              child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 12, horizontal: 18),
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(_transparentBg.toInt(), 0, 0, 0),
-                  ),
-                  child: Column(children: [
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image.asset(
-                            'assets/images/Netflix_N_logo.png',
-                            width: 24,
-                          ),
-                          Row(children: [
-                            _iconBar(Icons.cast),
-                            _iconBar(Icons.search),
-                            _iconBar(Icons.tune),
-                            roundImage(
-                                file: MyProFile().getImage(
-                                    widget.user!["Profile"]!["key"],
-                                    widget.user!["Profile"]!["index"]),
-                                size: 26),
-                          ]),
-                        ]),
-                    Container(
-                        alignment: Alignment.centerLeft,
-                        padding: const EdgeInsets.only(top: 16, left: 30),
-                        child: Row(
-                          children: const [
-                            Text(
-                              'More Option',
-                              style: TextStyle( color:MyColors.text ,fontSize: 20),
+              height: _tops+116,
+              child: SingleChildScrollView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: _scrollController2,
+                child: Container(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 0, horizontal: 18),
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(_transparentBg.toInt(), 0, 0, 0),
+                    ),
+                    child: Column(children: [
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Image.asset(
+                              'assets/images/Netflix_N_logo.png',
+                              width: 24,
                             ),
-                            Icon(Icons.arrow_drop_down,color: MyColors.text,),
-                          ],
-                        ))
-                  ])))
-        ]));
+                            Row(children: [
+                              _iconBar(Icons.cast),
+                              _iconBar(Icons.search),
+                              _iconBar(Icons.tune),
+                              roundImage(
+                                  file: MyProFile().getImage(
+                                      widget.user!["Profile"]!["key"],
+                                      widget.user!["Profile"]!["index"]),
+                                  size: 26),
+                            ]),
+                          ]),
+                      Container(
+                          alignment: Alignment.centerLeft,
+                          padding: const EdgeInsets.only(top: 16, left: 30, bottom: 16),
+                          child: Row(
+                            children: const [
+                              Text(
+                                'More Option',
+                                style: TextStyle( color:MyColors.text ,fontSize: 20),
+                              ),
+                              Icon(Icons.arrow_drop_down,color: MyColors.text,),
+                            ],
+                          ))
+                    ])),
+                ))
+        ,Positioned(top: 0,
+        left: 0,
+        right: 0,
+        height: MediaQuery.of(context).padding.top,
+          child: Container(
+            width: double.infinity,
+            height: MediaQuery.of(context).padding.top, decoration: BoxDecoration(
+                      color: Color.fromARGB(_transparentBg.toInt(), 0, 0, 0),
+                    ),))]));
   }
 }
