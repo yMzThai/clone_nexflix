@@ -106,7 +106,7 @@ class _CusttomSlivereditorState extends State<CusttomSlivereditor> {
                 controller: _scrollController2,
                 child: Container(
                     padding:
-                        const EdgeInsets.symmetric(vertical: 0, horizontal: 18),
+                        const EdgeInsets.only(top: 18, left: 18 ,right: 18),
                     decoration: BoxDecoration(
                       color: Color.fromARGB(_transparentBg.toInt(), 0, 0, 0),
                     ),
